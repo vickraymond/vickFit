@@ -1,0 +1,441 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #1b0e18 0%, #0f0f0f 55%, #050505 100%);
+  color: #f0f0f0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  background: #1a1a1a;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #e63222;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e63222;
+  letter-spacing: 2px;
+}
+
+.header-stats {
+  display: flex;
+  gap: 30px;
+}
+
+.header-stat {
+  text-align: center;
+}
+
+.header-stat span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e63222;
+}
+
+.header-stat p {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 2px solid #e63222;
+  border-radius: 999px;
+  background: transparent;
+  color: #e63222;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  margin-left: 20px;
+}
+
+.install-btn:hover {
+  background: rgba(230, 50, 34, 0.1);
+  transform: translateY(-1px);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.exercise-list h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.exercise-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.exercise-card:hover {
+  border-color: #e63222;
+  background: #222;
+}
+
+.exercise-card.active {
+  border-color: #e63222;
+  background: #2a1a1a;
+}
+
+.exercise-emoji {
+  font-size: 2rem;
+}
+
+.exercise-info h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 3px;
+}
+
+.exercise-info p {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.exercise-badge {
+  margin-left: auto;
+  background: #e63222;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.workout-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.timer-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+}
+
+.timer-card h2 {
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.current-exercise {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e63222;
+  margin-bottom: 8px;
+}
+
+.exercise-desc {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.timer-display {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.timer-display.running {
+  color: #e63222;
+}
+
+.video-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.video-overlay:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+.video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.timer-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.timer-meta label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.timer-meta input {
+  width: 64px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f0f0f0;
+  text-align: center;
+}
+
+.circuit-status {
+  font-size: 0.85rem;
+  color: #e63222;
+  font-weight: 700;
+}
+
+.timer-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:hover { transform: scale(1.05); }
+
+.btn-start { background: #e63222; color: white; }
+.btn-circuit { background: #1a1a1a; color: #e63222; border: 1px solid #e63222; }
+.btn-audio { background: #1a1a1a; color: #e63222; border: 1px solid #e63222; }
+.btn-mute { background: #1a1a1a; color: #e63222; border: 1px solid #e63222; }
+.btn-reset { background: #333; color: #f0f0f0; }
+
+.rep-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 25px 30px;
+  text-align: center;
+}
+
+.rep-card h2 {
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.rep-display {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #f0f0f0;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+.rep-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn-rep { background: #e63222; color: white; font-size: 1.2rem; }
+.btn-minus { background: #333; color: white; font-size: 1.2rem; }
+
+.progress-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 25px 30px;
+}
+
+.progress-card h2 {
+  font-size: 1rem;
+  color: #888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.progress-day {
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+}
+
+.progress-day-header {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #e63222;
+}
+
+.progress-day-summary {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.progress-empty {
+  color: #888;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.progress-item {
+  margin-bottom: 15px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.progress-bar {
+  background: #333;
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #e63222;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.log-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  background: #e63222;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.log-btn:hover { transform: scale(1.02); }
+
+.progress-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.clear-btn {
+  flex: 1;
+  background: #333;
+  color: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.clear-btn:hover { transform: scale(1.02); }
+
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .header-stats {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .exercise-list {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.done-message {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4CAF50;
+  margin-top: 10px;
+}

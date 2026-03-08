@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f0f0f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FitVick">
+  <title>FitVick 💪</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">FitVick 💪</div>
+    <div class="header-stats">
+      <div class="header-stat">
+        <span id="totalWorkouts">0</span>
+        <p>Workouts</p>
+      </div>
+      <div class="header-stat">
+        <span id="totalReps">0</span>
+        <p>Total Reps</p>
+      </div>
+      <div class="header-stat">
+        <span id="streak">0🔥</span>
+        <p>Day Streak</p>
+      </div>
+    </div>
+    <button id="installBtn" class="install-btn" hidden>Install App</button>
+    <button id="apkBtn" class="install-btn">Get APK</button>
+  </header>
+
+  <div class="main">
+
+    <div class="exercise-list">
+      <h2>💪 Choose Exercise</h2>
+
+      <div class="exercise-card active" data-name="Push Ups" data-time="30" data-desc="Keep your back straight. Lower chest to floor and push back up." data-video-id="H4-C6qR4zP8">
+        <span class="exercise-emoji">🤸</span>
+        <div class="exercise-info">
+          <h3>Push Ups</h3>
+          <p>Chest · Shoulders · Triceps</p>
+        </div>
+        <span class="exercise-badge">30s</span>
+      </div>
+
+      <div class="exercise-card" data-name="Squats" data-time="45" data-desc="Feet shoulder width apart. Lower down like sitting on a chair." data-video-id="aclHkVaku9U">
+        <span class="exercise-emoji">🦵</span>
+        <div class="exercise-info">
+          <h3>Squats</h3>
+          <p>Quads · Glutes · Hamstrings</p>
+        </div>
+        <span class="exercise-badge">45s</span>
+      </div>
+
+      <div class="exercise-card" data-name="Mountain Climbers" data-time="30" data-desc="Start in plank position. Drive knees to chest alternately fast." data-video-id="wQ3YiUYB1x4">
+        <span class="exercise-emoji">🧗</span>
+        <div class="exercise-info">
+          <h3>Mountain Climbers</h3>
+          <p>Core · Cardio · Full Body</p>
+        </div>
+        <span class="exercise-badge">30s</span>
+      </div>
+
+      <div class="exercise-card" data-name="Jumping Jacks" data-time="60" data-desc="Jump feet out while raising arms overhead. Keep a steady rhythm." data-video-id="m_XJtR3pSVo">
+        <span class="exercise-emoji">⚡</span>
+        <div class="exercise-info">
+          <h3>Jumping Jacks</h3>
+          <p>Cardio · Full Body Warm Up</p>
+        </div>
+        <span class="exercise-badge">60s</span>
+      </div>
+
+      <div class="exercise-card" data-name="Plank" data-time="45" data-desc="Hold your body straight like a board. Squeeze your core tight." data-video-id="pSHjTRCQxIw">
+        <span class="exercise-emoji">🧘</span>
+        <div class="exercise-info">
+          <h3>Plank</h3>
+          <p>Core · Stability · Endurance</p>
+        </div>
+        <span class="exercise-badge">45s</span>
+      </div>
+
+      <div class="exercise-card" data-name="Burpees" data-time="30" data-desc="Squat down, jump feet back to plank, do push up, jump back up." data-video-id="wDHB1QZbJoA">
+        <span class="exercise-emoji">🦘</span>
+        <div class="exercise-info">
+          <h3>Burpees</h3>
+          <p>Full Body · Cardio · Strength</p>
+        </div>
+        <span class="exercise-badge">30s</span>
+      </div>
+
+    </div>
+
+    <div class="workout-panel">
+
+      <div class="timer-card">
+        <h2>NOW TRAINING</h2>
+        <div class="current-exercise" id="currentExercise">Push Ups</div>
+        <p class="exercise-desc" id="exerciseDesc">Keep your back straight. Lower chest to floor and push back up.</p>
+        <div class="timer-display" id="timer">00:30</div>
+        <div class="video-wrap">
+          <iframe id="exerciseVideo" src="about:blank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div id="videoOverlay" class="video-overlay">Tap to play demo</div>
+        </div>
+        <div class="timer-meta">
+          <label>
+            Rest (sec)
+            <input id="restInput" type="number" min="5" max="60" value="15" />
+          </label>
+          <div id="circuitStatus" class="circuit-status" hidden>• Circuit: <span id="circuitStep">0</span>/<span id="circuitTotal">0</span></div>
+        </div>
+
+        <div class="timer-btns">
+          <button class="btn btn-start" id="startBtn">▶ Start</button>
+          <button class="btn btn-circuit" id="circuitBtn">⧗ Circuit</button>
+          <button class="btn btn-audio" id="muteBtn">🎧 Coach</button>
+          <button class="btn btn-reset" id="resetBtn">↺ Reset</button>
+        </div>
+      </div>
+
+      <div class="rep-card">
+        <h2>REP COUNTER</h2>
+        <div class="rep-display" id="reps">0</div>
+        <div class="rep-btns">
+          <button class="btn btn-minus" id="minusBtn">−</button>
+          <button class="btn btn-rep" id="plusBtn">+ Rep</button>
+        </div>
+      </div>
+
+      <div class="progress-card">
+        <h2>TODAY'S PROGRESS</h2>
+        <div id="progressList"></div>
+          <div class="progress-actions">
+          <button class="log-btn" id="logBtn">✅ Log Workout</button>
+          <button class="clear-btn" id="clearBtn">🧹 Clear</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    window.onYouTubeIframeAPIReady = function () {
+      if (window.initYouTubePlayer) window.initYouTubePlayer();
+    };
+  </script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(console.error);
+      });
+    }
+  </script>
+</body>
+</html>
